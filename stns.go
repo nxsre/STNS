@@ -1,4 +1,4 @@
-package STNS
+package main
 
 import (
 	"fmt"
@@ -95,7 +95,7 @@ func appBefore(c *cli.Context) error {
 	return nil
 }
 
-func M() {
+func main() {
 	cli.VersionPrinter = printVersion
 
 	app := cli.NewApp()
