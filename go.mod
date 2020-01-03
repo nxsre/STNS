@@ -1,4 +1,4 @@
-module github.com/STNS/STNS
+module github.com/soopsio/STNS/v2
 
 go 1.12
 
