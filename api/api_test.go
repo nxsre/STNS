@@ -8,9 +8,9 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/STNS/STNS/middleware"
-	"github.com/STNS/STNS/model"
-	"github.com/STNS/STNS/stns"
+	"github.com/nxsre/stns/middleware"
+	"github.com/nxsre/stns/model"
+	"github.com/nxsre/stns/stns"
 	"github.com/labstack/echo"
 	"github.com/stretchr/testify/assert"
 )

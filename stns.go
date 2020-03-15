@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/STNS/STNS/model"
-	"github.com/STNS/STNS/server"
-	"github.com/STNS/STNS/stns"
+	"github.com/nxsre/stns/model"
+	"github.com/nxsre/stns/server"
+	"github.com/nxsre/stns/stns"
 	"github.com/urfave/cli"
 )
 

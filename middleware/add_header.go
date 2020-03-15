@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/STNS/STNS/model"
+	"github.com/nxsre/stns/model"
 	"github.com/labstack/echo"
 )
 

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/STNS/STNS/model"
-	"github.com/STNS/STNS/stns"
+	"github.com/nxsre/stns/model"
+	"github.com/nxsre/stns/stns"
 )
 
 func syncConfig(b model.Backend, config *stns.Config) error {

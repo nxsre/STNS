@@ -3,7 +3,7 @@ Name:             stns-v2
 Version:          2.2.5
 Release:          1
 License:          GPLv3
-URL:              https://github.com/STNS/STNS
+URL:              https://github.com/nxsre/stns
 Group:            System Environment/Base
 Packager:         pyama86 <www.kazu.com@gmail.com>
 Source:           %{name}-%{version}.tar.gz

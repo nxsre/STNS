@@ -32,8 +32,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/STNS/STNS/model"
-	"github.com/STNS/STNS/stns"
+	"github.com/nxsre/stns/model"
+	"github.com/nxsre/stns/stns"
 	"github.com/facebookgo/pidfile"
 	"github.com/labstack/gommon/log"
 	"github.com/lestrrat/go-server-starter/listener"

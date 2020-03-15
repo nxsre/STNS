@@ -10,5 +10,5 @@ RUN apt-get install -qqy build-essential \
     clang \
     lsof \
     netcat
-ADD . /go/src/github.com/STNS/STNS
-WORKDIR /go/src/github.com/STNS/STNS
+ADD . /go/src/github.com/nxsre/stns
+WORKDIR /go/src/github.com/nxsre/stns

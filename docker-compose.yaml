@@ -7,7 +7,7 @@ services:
       args:
         GO_VERSION: 1.12.1
     volumes:
-      - .:/go/src/github.com/STNS/STNS
+      - .:/go/src/github.com/nxsre/stns
       - ~/pkg:/go/pkg
     environment:
       DIST: el7
@@ -19,7 +19,7 @@ services:
       args:
         GO_VERSION: 1.12.1
     volumes:
-      - .:/go/src/github.com/STNS/STNS
+      - .:/go/src/github.com/nxsre/stns
       - ~/pkg:/go/pkg
     environment:
       DIST: el6
@@ -31,7 +31,7 @@ services:
       args:
         GO_VERSION: 1.12.1
     volumes:
-      - .:/go/src/github.com/STNS/STNS
+      - .:/go/src/github.com/nxsre/stns
       - ~/pkg:/go/pkg
     environment:
       DIST: xenial

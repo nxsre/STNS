@@ -75,7 +75,7 @@ lint: ## Exec golint
 	golint -min_confidence 1.1 -set_exit_status $(TEST)
 
 server: ## Run server
-	$(GO) run github.com/STNS/STNS --listen 127.0.0.1:1104 --pidfile ./stns.pid --config ./stns/integration.toml --protocol $(STNS_PROTOCOL) server
+	$(GO) run github.com/nxsre/stns --listen 127.0.0.1:1104 --pidfile ./stns.pid --config ./stns/integration.toml --protocol $(STNS_PROTOCOL) server
 
 integration: integration_http integration_ldap ## Run integration test after Server wakeup
 
@@ -104,7 +104,7 @@ install: build ## Install
 
 docker:
 	docker build -t stns_develop .
-	docker run --cap-add=SYS_PTRACE --security-opt="seccomp=unconfined" -v $(GOPATH):/go/ -v $(GOPATH)/pkg/mod/cache:/go/pkg/mod/cache -w /go/src/github.com/STNS/STNS -it stns_develop /bin/bash
+	docker run --cap-add=SYS_PTRACE --security-opt="seccomp=unconfined" -v $(GOPATH):/go/ -v $(GOPATH)/pkg/mod/cache:/go/pkg/mod/cache -w /go/src/github.com/nxsre/stns -it stns_develop /bin/bash
 
 source_for_rpm: ## Create source for RPM
 	@echo "$(INFO_COLOR)==> $(RESET)$(BOLD)Distributing$(RESET)"
@@ -122,13 +122,13 @@ rpm: source_for_rpm ## Packaging for RPM
 	cp builds/stns-v2-$(VERSION).tar.gz /root/rpmbuild/SOURCES
 	spectool -g -R rpm/stns.spec
 	rpmbuild -ba rpm/stns.spec
-	cp /root/rpmbuild/RPMS/*/*.rpm /go/src/github.com/STNS/STNS/builds
+	cp /root/rpmbuild/RPMS/*/*.rpm /go/src/github.com/nxsre/stns/builds
 
 pkg: ## Create some distribution packages
 	rm -rf builds && mkdir builds
-	docker-compose run -v `pwd`:/go/src/github.com/STNS/STNS -v ~/pkg:/go/pkg --rm centos6
-	docker-compose run -v `pwd`:/go/src/github.com/STNS/STNS -v ~/pkg:/go/pkg --rm centos7
-	docker-compose run -v `pwd`:/go/src/github.com/STNS/STNS -v ~/pkg:/go/pkg --rm ubuntu16
+	docker-compose run -v `pwd`:/go/src/github.com/nxsre/stns -v ~/pkg:/go/pkg --rm centos6
+	docker-compose run -v `pwd`:/go/src/github.com/nxsre/stns -v ~/pkg:/go/pkg --rm centos7
+	docker-compose run -v `pwd`:/go/src/github.com/nxsre/stns -v ~/pkg:/go/pkg --rm ubuntu16
 
 source_for_deb: ## Create source for DEB
 	@echo "$(INFO_COLOR)==> $(RESET)$(BOLD)Distributing$(RESET)"
@@ -146,11 +146,11 @@ deb: source_for_deb ## Packaging for DEB
 		cd stns-v2-$(VERSION) && \
 		dh_make --single --createorig -y && \
 		rm -rf debian/*.ex debian/*.EX debian/README.Debian && \
-		cp -r $(GOPATH)/src/github.com/STNS/STNS/debian/* debian/ && \
+		cp -r $(GOPATH)/src/github.com/nxsre/stns/debian/* debian/ && \
 		sed -i -e 's/xenial/$(DIST)/g' debian/changelog && \
 		debuild -uc -us
 	cd tmp.$(DIST) && \
-		cp *.deb $(GOPATH)/src/github.com/STNS/STNS/builds
+		cp *.deb $(GOPATH)/src/github.com/nxsre/stns/builds
 	rm -rf tmp.$(DIST)
 
 github_release: ## Create some distribution packages

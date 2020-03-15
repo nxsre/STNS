@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/STNS/STNS/model"
-	"github.com/STNS/STNS/stns"
+	"github.com/nxsre/stns/model"
+	"github.com/nxsre/stns/stns"
 	etcd "github.com/etcd-io/etcd/client"
 	"golang.org/x/net/context"
 )

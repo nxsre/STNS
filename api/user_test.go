@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/STNS/STNS/model"
-	"github.com/STNS/STNS/stns"
+	"github.com/nxsre/stns/model"
+	"github.com/nxsre/stns/stns"
 )
 
 func Test_getUsers(t *testing.T) {
