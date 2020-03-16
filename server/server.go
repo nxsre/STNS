@@ -16,7 +16,7 @@ import (
 	_ "github.com/tredoe/osutil/user/crypt/md5_crypt"
 	_ "github.com/tredoe/osutil/user/crypt/sha256_crypt"
 	_ "github.com/tredoe/osutil/user/crypt/sha512_crypt"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
 type server interface {

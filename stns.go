@@ -7,7 +7,7 @@ import (
 	"github.com/nxsre/stns/model"
 	"github.com/nxsre/stns/server"
 	"github.com/nxsre/stns/stns"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
 var (
@@ -19,46 +19,46 @@ var (
 )
 
 var flags = []cli.Flag{
-	cli.StringFlag{
-		Name:   "logfile",
-		Value:  "",
-		Usage:  "Log file path",
-		EnvVar: "STNS_LOG",
+	&cli.StringFlag{
+		Name:    "logfile",
+		Value:   "",
+		Usage:   "Log file path",
+		EnvVars: []string{"STNS_LOG"},
 	},
-	cli.StringFlag{
-		Name:   "config",
-		Value:  "/etc/stns/server/stns.conf",
-		Usage:  "Server config",
-		EnvVar: "STNS_CONFIG",
+	&cli.StringFlag{
+		Name:    "config",
+		Value:   "/etc/stns/server/stns.conf",
+		Usage:   "Server config",
+		EnvVars: []string{"STNS_CONFIG"},
 	},
-	cli.StringFlag{
-		Name:   "pidfile",
-		Value:  "/var/run/stns.pid",
-		Usage:  "pid file path",
-		EnvVar: "STNS_PID",
+	&cli.StringFlag{
+		Name:    "pidfile",
+		Value:   "/var/run/stns.pid",
+		Usage:   "pid file path",
+		EnvVars: []string{"STNS_PID"},
 	},
-	cli.StringFlag{
-		Name:   "protocol",
-		Value:  "http",
-		Usage:  "interface protocol",
-		EnvVar: "STNS_PROTOCOL",
+	&cli.StringFlag{
+		Name:    "protocol",
+		Value:   "http",
+		Usage:   "interface protocol",
+		EnvVars: []string{"STNS_PROTOCOL"},
 	},
-	cli.StringFlag{
-		Name:   "listen",
-		Value:  "",
-		Usage:  "listern addrand port(xxx.xxx.xxx.xxx:yyy)",
-		EnvVar: "STNS_LISTEN",
+	&cli.StringFlag{
+		Name:    "listen",
+		Value:   "",
+		Usage:   "listern addrand port(xxx.xxx.xxx.xxx:yyy)",
+		EnvVars: []string{"STNS_LISTEN"},
 	},
 }
 
-var commands = []cli.Command{
-	{
+var commands = []*cli.Command{
+	&cli.Command{
 		Name:    "server",
 		Aliases: []string{"s"},
 		Usage:   "Launch core api server",
 		Action:  server.LaunchServer,
 	},
-	{
+	&cli.Command{
 		Name:    "checkconf",
 		Aliases: []string{"c"},
 		Usage:   "Check Config",
@@ -73,24 +73,24 @@ func printVersion(c *cli.Context) {
 
 func appBefore(c *cli.Context) error {
 	// I want to quit this implementation
-	if c.GlobalString("logfile") != "" {
-		os.Setenv("STNS_LOG", c.GlobalString("logfile"))
+	if c.String("logfile") != "" {
+		os.Setenv("STNS_LOG", c.String("logfile"))
 	}
 
-	if c.GlobalString("config") != "" {
-		os.Setenv("STNS_CONFIG", c.GlobalString("config"))
+	if c.String("config") != "" {
+		os.Setenv("STNS_CONFIG", c.String("config"))
 	}
 
-	if c.GlobalString("pidfile") != "" {
-		os.Setenv("STNS_PID", c.GlobalString("pidfile"))
+	if c.String("pidfile") != "" {
+		os.Setenv("STNS_PID", c.String("pidfile"))
 	}
 
-	if c.GlobalString("protocol") != "" {
-		os.Setenv("STNS_PROTOCOL", c.GlobalString("protocol"))
+	if c.String("protocol") != "" {
+		os.Setenv("STNS_PROTOCOL", c.String("protocol"))
 	}
 
-	if c.GlobalString("listen") != "" {
-		os.Setenv("STNS_LISTEN", c.GlobalString("listen"))
+	if c.String("listen") != "" {
+		os.Setenv("STNS_LISTEN", c.String("listen"))
 	}
 	return nil
 }
