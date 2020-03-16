@@ -1,5 +1,7 @@
 package model
 
+import "time"
+
 type User struct {
 	Base          `yaml:",inline"`
 	Password      string   `toml:"password" yaml:"password" json:"password"`
@@ -9,6 +11,7 @@ type User struct {
 	Gecos         string   `toml:"gecos" yaml:"gecos" json:"gecos"`
 	Keys          []string `toml:"keys" yaml:"keys" json:"keys"`
 	LinkUsers     []string `toml:"link_users" yaml:"link_users" json:"-"`
+	Locked        time.Time `toml:"locked" yaml:"locked"  json:"locked"`
 	TOTP          string   `toml:"totp" yaml:"totp" json:"totp"`
 	TOTPEnable    bool     `toml:"totp_enable" yaml:"totp_enable" json:"totp_enable"`
 	SetupCommands []string `toml:"setup_commands" yaml:"setup_commands" json:"setup_commands"`
